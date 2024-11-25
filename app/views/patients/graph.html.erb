@@ -1,0 +1,3 @@
+<% if policy(@patients).graph? %>
+    <%= line_chart Patient.group_by_day(:created_at).count %>
+<% end %>

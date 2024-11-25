@@ -1,0 +1,63 @@
+<div class="col-md-6 mx-auto">
+<div class="card border-info">
+  <div class="card-body">
+    <h5 class="card-title text-primary"><%=@patient.full_name %></h5>
+    <hr class="border border-primary border-3 opacity-75">
+    <p class="card-text"><%= @patient.diagnosis %></p>
+    
+  <p>
+    <strong>Blood group:</strong>
+    <%= patient.blood_group %>
+  </p>
+
+  <p>
+    <strong>Gender:</strong>
+    <%= patient.gender %>
+  </p>
+<% if patient.date_of_birth.present? %>
+  <p>
+    <strong>Date of birth:</strong>
+    <%= patient.date_of_birth.strftime("%d-%m-%Y")  %>
+  </p>  
+  <% end %>
+
+  <p>
+    <strong>Blood group:</strong>
+    <%= patient.blood_group %>
+  </p>
+  <p>
+    <strong>Mobile number:</strong>
+    <%= patient.mobile_number %>
+  </p>
+
+  <p>
+    <strong>Occupation:</strong>
+    <%= patient.occupation %>
+  </p>
+
+  <p>
+    <strong>Marital status:</strong>
+    <%= patient.marital_status %>
+  </p>
+  
+  <% if patient.weight.present? %>
+  <p>
+    <strong>Weight:</strong>
+    <%= patient.weight %><span>kg</span>
+  </p>
+  <% end %>
+
+  <% if patient.height.present? %>
+  <p>
+    <strong>Height:</strong>
+    <%= patient.height %><span>cm</span>
+  </p>
+  <% end %>
+
+  <p>
+    <strong>Op number:</strong>
+    <%= patient.op_number %>
+  </p>
+
+</div>
+</div>

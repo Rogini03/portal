@@ -1,0 +1,42 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Patients" %>
+<div class="d-flex justify-content-end">
+<% if policy(@patients).new? %>
+<%= link_to "Create Patient", new_patient_path, :class =>"btn btn-primary btn-lg" %>
+<% end %>
+</div><br>
+
+<div id="patients">
+<div class="table-responsive">
+<table class="table table-primary table-hover">
+<thead>
+<tr>
+  <th scope="col">ID</th>
+  <th scope="col">FirstName</th>
+  <th scope="col">LastName</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<% @patients.each do |patient| %>
+<tr>
+<td><%=patient.id %></th>
+<td><%=patient.first_name.humanize %></th>
+<td><%=patient.last_name.humanize %></td>
+<td>
+<div class="btn-group">
+<%= link_to "View", patient_path(patient), :class =>"btn btn-outline-primary btn-sm" %>
+<% if policy(patient).edit? %>
+  <%= link_to "Edit", edit_patient_path(patient), :class =>"btn btn-outline-success btn-sm" %>
+  <%= button_to 'Delete', patient_path(patient), method: :delete, :class=>"btn btn-outline-danger btn-sm", form: { turbolink: false}  %> 
+<% end %>
+</div>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%= paginate @patients %>
+
+</div>

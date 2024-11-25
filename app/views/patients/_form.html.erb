@@ -1,0 +1,79 @@
+<%= form_with(model: patient) do |form| %>
+  <% if patient.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+        <% patient.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name, :class=>"form-control form-control-lg" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name, :class=>"form-control form-control-lg" %>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-6">
+    <%= form.label :date_of_birth, style: "display: block" %>
+    <%= form.date_field :date_of_birth, :class=>"form-control form-control-lg" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :blood_group, style: "display: block" %>
+    <%= form.select :blood_group, Patient.blood_groups.keys,{},{:class => 'form-control'} %>
+  </div>
+  </div>
+<div class="row">
+  <div class="col-md-6">
+    <%= form.label :gender, style: "display: block" %>
+    <%= form.select :gender, Patient.genders.keys ,{},{:class => 'form-control'}%>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :mobile_number, style: "display: block" %>
+    <%= form.text_field :mobile_number, :class=>"form-control form-control-lg" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <%= form.label :occupation, style: "display: block" %>
+    <%= form.text_field :occupation , :class=>"form-control form-control-lg"%>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :marital_status, style: "display: block" %>
+    <%= form.select :marital_status, Patient.marital_statuses.keys,{},{:class => 'form-control'} %>
+  </div>
+  </div>
+<div class="row">
+  <div class="col-md-6">
+    <%= form.label :weight, style: "display: block" %>
+    <%= form.number_field :weight, :class=>"form-control form-control-lg" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :height, style: "display: block" %>
+    <%= form.number_field :height, :class=>"form-control form-control-lg" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= form.label :diagnosis, style: "display: block" %>
+    <%= form.text_area :diagnosis, :class=>"form-control form-control-lg" %>
+  </div>
+  </div><br>
+
+  <div class="col">
+    <%= form.submit "Submit", :class => "btn btn-primary" %>
+  </div>
+<% end %>

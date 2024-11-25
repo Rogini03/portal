@@ -1,0 +1,41 @@
+
+<h1 class="text-center">Sign up</h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="col-md-4 mx-auto">
+  <%= f.label :name %>
+    <%= f.text_field :name, :class=> "form-control form-control-lg" %>
+  </div><br>
+
+  <div class="col-md-4 mx-auto">
+    <%= f.label :email %>
+    <%= f.email_field :email, :class=> "form-control form-control-lg"%>
+  </div><br>
+
+  <div class="col-md-4 mx-auto">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, :class=> "form-control form-control-lg" %>
+  </div><br>
+
+  <div class="col-md-4 mx-auto">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, :class=> "form-control form-control-lg" %>
+  </div><br>
+
+  <div class="col-md-4 mx-auto">
+    <%= f.label :Role %><br />
+    <%= f.select(:role, User.roles.keys.map{|key| [key.humanize, key]},{},{:class => 'form-control'})  %>
+  </div><br>
+
+  <div class="actions d-grid gap-2 col-4 mx-auto">
+    <%= f.submit "Sign up", data: {turbo: false}, :class =>"btn btn-primary" %>
+  </div><br>  
+<% end %>
+<div class="col-md-4 mx-auto">
+<%= render "devise/shared/links" %>
+</div>

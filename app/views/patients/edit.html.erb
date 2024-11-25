@@ -1,0 +1,12 @@
+<% content_for :title, "Edit Patient" %>
+<div class="d-flex justify-content-end mt-4">
+  <%= link_to "Back", patients_path, :class=>"btn btn-outline-info" %>
+</div>
+
+<h1>Editing patient</h1><br>
+
+<%= render "form", patient: @patient %>
+
+<br>
+
+
